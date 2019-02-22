@@ -6,8 +6,9 @@ export default class Login extends Component {
   render() {
     return (
       <View style={{ margin: 10, flex: 1, textAlign: "center" }}>
-        <Text style={{ textAlign: "center" }}>Login</Text>
         <TextInput
+          placeholder="Login"
+          textContentType="username"
           style={{
             margin: 10,
             height: 40,
@@ -15,8 +16,9 @@ export default class Login extends Component {
             borderWidth: 1
           }}
         />
-        <Text style={{ textAlign: "center" }}>Senha</Text>
         <TextInput
+          placeholder="Senha"
+          textContentType="password"
           style={{
             margin: 10,
             height: 40,
