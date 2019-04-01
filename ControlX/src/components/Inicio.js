@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, View, TouchableHighlight, Image } from "react-native";
+import { Text, View, TouchableOpacity, Image, ScrollView, StyleSheet } from "react-native";
 import { Actions } from "react-native-router-flux";
 import { Card, Button, ButtonGroup, Header, HeaderIcon, HeaderProps, HeaderSubComponent, colors, ThemeProvider } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -34,90 +34,154 @@ const theme = {
   }
 }
 
-const users = [
-  {
-     name: 'Gustavo Nunes',
-     avatar: 'https://scontent.fqsc1-1.fna.fbcdn.net/v/t1.0-9/37340846_1989970671037289_7785475973234819072_n.jpg?_nc_cat=106&_nc_ht=scontent.fqsc1-1.fna&oh=9a9c30edd704e1dcf55c2ecfb79128c8&oe=5D2394D0'
-  }
- ]
+const users = fetch('https://gnunes.com.br/controlx/', {
+  method: 'GET',
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    listar: 'Produto'
+  }),
+});
 
 
 export default class Inicio extends Component {
+  constructor(props){
+    super(props);
+
+  }
+
+
   render() {
     return (
       <ThemeProvider theme={theme}>
-      <View style={{ flex: 3, backgroundColor: 'white' }}>
-        <View style={{ flex: 1, backgroundColor: 'white', height: 200 }}>
+      <ScrollView  contentContainerStyle={{ }}>
+        <View style={{ flex: 1, backgroundColor: 'white', height: 50 }}>
           <Header
-              style={{height: 200}}
+              style={{height: 200, backgroundColor: '#03A9F4'}}
               placement="left"
-              leftComponent={{ icon: 'menu', color: '#fff', marginBottom: 60 }}
+              leftComponent={{ icon: 'home', color: '#fff', marginBottom: 60 }}
               centerComponent={{ text: 'ControlX.', style: { color: '#fff', marginBottom: 60 } }}
               rightComponent={{  }}
             />
         </View>
 
-        <View style={{ flex: 10, backgroundColor: 'white', height: 200 }}>
-          <Card
-            title='Bem Vindo'>
+        <View style={{ flex: 1, backgroundColor: 'white', height: 260 }}>
+          <Card title='Bem Vindo'>
             <Text style={{marginBottom: 10}}>
-              Essa é a tela principal, aqui você recebera noticias de atualizações do seu estoque em geral.
+              Clique para procurar por codigo de barras.
             </Text>
             <Button
-              icon={<Icon name='code' color='#ffffff' />}
+              icon={<Icon name='camera' color='#ffffff' />}
               backgroundColor='#03A9F4'
               buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-              title='Ver estoque'
+              title='Abrir camera'
               onPress={() => {
-                Actions.tela();
+                Actions.camera();
               }} />
           </Card>
         </View>
-          
-          
 
-          
-        <View style={{flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'flex-end', marginBottom: 0, backgroundColor: '#03A9F4', height: 100 }}>
-          <Button
+        <View style={{ backgroundColor: 'white', height: 500}}>
+          <View style={styles.alinar_centro}>
+
+            <Text style={{marginTop: 10,marginBottom:10, marginLeft: 10}}>Produtos</Text>
+            <View style={styles.alinhar_row }>
+              <View style={styles.btnEscola}>
+                <Button
+                  title="Listar"
+                  type="outline"
+                  onPress={() => {
+                    Actions.tela({ tipo : 'produtos' });
+                  }}
+                />
+              </View>
+              <View style={styles.btnEscola}>
+                <Button
+                  
+                  title="Adicionar"
+                  type="outline"
+                  onPress={() => {
+                    Actions.addP({ tipo : 'produtos' });
+                  }}
+                />
+              </View>
+            </View>
+
+          </View>
+
+          <View style={styles.alinar_centro}>
+            <Text style={{marginTop: 10,marginBottom:10, marginLeft: 10}}>Fornecedores</Text>
+            <View style={styles.alinhar_row }>
+              <View style={styles.btnEscola}>
+                <Button
+                  title="Listar"
+                  type="outline"
+                  onPress={() => {
+                    Actions.tela({ tipo : 'fornecedor' });
+                  }}
+                />
+              </View>
+              <View style={styles.btnEscola}>
+                <Button
+                  
+                  title="Adicionar"
+                  type="outline"
+                  onPress={() => {
+                    Actions.addP({ tipo : 'fornecedor' });
+                  }}
+                />
+              </View>
+            </View>
             
-            icon={
-              <Icon
-                light
-                raised={true}
-                type='medium'
-                name="th-list"
-                size={35}
-                color="white"
-                
-              />
-            }
-            iconRight
-            title=""
-            onPress={() => {
-              Actions.tela();
-            }}
-            type="Clear"
-          />
-          <Button
+          </View>
+
+          <View style={styles.alinar_centro}>
+            <Text style={{marginTop: 10,marginBottom:10, marginLeft: 10}}>Categoria</Text>
+            <View style={styles.alinhar_row }>
+              <View style={styles.btnEscola}>
+                <Button
+                  title="Listar"
+                  type="outline"
+                  onPress={() => {
+                    Actions.tela({ tipo : 'categoria' });
+                  }}
+                />
+              </View>
+              <View style={styles.btnEscola}>
+                <Button
+                  
+                  title="Adicionar"
+                  type="outline"
+                  onPress={() => {
+                    Actions.addP({ tipo : 'categoria' });
+                  }}
+                />
+              </View>
+            </View>
             
-            icon={
-              <Icon
-                name="clipboard"
-                size={35}
-                color="white"
-              />
-            }
-            iconRight
-            title=""
-            type="Clear"
-            onPress={() => {
-              Actions.addP();
-            }}
-          />
+          </View>
         </View>
-      </View>
+      </ScrollView>
       </ThemeProvider>
     );
     
   }
 }
+
+
+const styles = StyleSheet.create({
+  btnEscola: {
+    width: 150,
+    marginLeft: 10,
+    marginRight: 10
+  },
+  alinhar_row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  alinar_centro: {
+    justifyContent: 'center'
+  }
+});
