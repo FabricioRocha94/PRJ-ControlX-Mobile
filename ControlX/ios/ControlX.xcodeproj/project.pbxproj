@@ -76,6 +76,7 @@
 		DCEAD5AACC344734BEFBD8EE /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 902534BEBC214AAFADFC6FE0 /* Zocial.ttf */; };
 		3BD34AEF514D46B39B5843B3 /* libRNCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EAA8ED4EB294BA6BAA329CE /* libRNCamera.a */; };
 		5238B65A7C0948529D99D21A /* libReactNativePermissions.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 958AF9280258482EAF4196E9 /* libReactNativePermissions.a */; };
+		4D783EA9378B4EB7A7634698 /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7217E270951847CDA5056D43 /* libBVLinearGradient.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -423,6 +424,8 @@
 		8EAA8ED4EB294BA6BAA329CE /* libRNCamera.a */ = {isa = PBXFileReference; name = "libRNCamera.a"; path = "libRNCamera.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		427810C95E9A4994805D9F3D /* ReactNativePermissions.xcodeproj */ = {isa = PBXFileReference; name = "ReactNativePermissions.xcodeproj"; path = "../node_modules/react-native-permissions/ios/ReactNativePermissions.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		958AF9280258482EAF4196E9 /* libReactNativePermissions.a */ = {isa = PBXFileReference; name = "libReactNativePermissions.a"; path = "libReactNativePermissions.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		E5AFC63FB367499E8A209203 /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; name = "BVLinearGradient.xcodeproj"; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		7217E270951847CDA5056D43 /* libBVLinearGradient.a */ = {isa = PBXFileReference; name = "libBVLinearGradient.a"; path = "libBVLinearGradient.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -454,6 +457,7 @@
 				32BA35707E564884A3AC5A06 /* libRNVectorIcons.a in Frameworks */,
 				3BD34AEF514D46B39B5843B3 /* libRNCamera.a in Frameworks */,
 				5238B65A7C0948529D99D21A /* libReactNativePermissions.a in Frameworks */,
+				4D783EA9378B4EB7A7634698 /* libBVLinearGradient.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -647,6 +651,7 @@
 				ACB5A9431120475A8AC51F78 /* RNVectorIcons.xcodeproj */,
 				3DC33EE29D4C40FDA370FE98 /* RNCamera.xcodeproj */,
 				427810C95E9A4994805D9F3D /* ReactNativePermissions.xcodeproj */,
+				E5AFC63FB367499E8A209203 /* BVLinearGradient.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1353,12 +1358,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-camera\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-permissions\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-linear-gradient\BVLinearGradient",
 				);
 			};
 			name = Debug;
@@ -1384,12 +1391,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-camera\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-permissions\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-linear-gradient\BVLinearGradient",
 				);
 			};
 			name = Release;
@@ -1415,6 +1424,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-camera\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-permissions\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-linear-gradient\BVLinearGradient",
 				);
 			};
 			name = Debug;
@@ -1439,6 +1449,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-camera\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-permissions\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-linear-gradient\BVLinearGradient",
 				);
 			};
 			name = Release;
@@ -1472,12 +1483,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-camera\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-permissions\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-linear-gradient\BVLinearGradient",
 				);
 			};
 			name = Debug;
@@ -1511,12 +1524,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-camera\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-permissions\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-linear-gradient\BVLinearGradient",
 				);
 			};
 			name = Release;
@@ -1549,12 +1564,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-camera\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-permissions\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-linear-gradient\BVLinearGradient",
 				);
 			};
 			name = Debug;
@@ -1587,12 +1604,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-camera\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-permissions\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-linear-gradient\BVLinearGradient",
 				);
 			};
 			name = Release;

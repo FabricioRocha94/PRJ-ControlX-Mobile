@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Text, ScrollView, View, Picker, Alert } from "react-native";
 import { Actions } from "react-native-router-flux";
 import { Button, Input } from 'react-native-elements';
+import LinearGradient from 'react-native-linear-gradient';
 
 import{ setProduct } from './API';
 
@@ -10,7 +11,17 @@ export default class Inicio extends Component {
 
   constructor (props) {
     super(props)
-    this.state = {user: '', nome: '', qtd : '', fornecedor:'', cat: '', tipo_un: '', preco: '', estoque_min: '', tipo : this.props.tipo, url_foto: ''}
+    this.state = {user: '', 
+    nome: '', 
+    qtd : '', 
+    fornecedor:'', 
+    cat: '', 
+    tipo_un: '', 
+    preco: '', 
+    estoque_min: '', 
+    tipo : this.props.tipo, 
+    url_foto: '', 
+    codbarras: (this.props.editProd.edit == true || this.props.cam == true) ? (this.props.editProd.edit == true) ? this.props.editProd.codbarras : this.props.codbarras : null}
 
     this.setNome = this.setNome.bind(this)
     this.setQtd  = this.setQtd.bind(this)
@@ -20,6 +31,7 @@ export default class Inicio extends Component {
     this.setPreco = this.setPreco.bind(this)
     this.setEstoque_min = this.setEstoque_min.bind(this)
     this.setUrl_foto = this.setUrl_foto.bind(this)
+    this.setCodBarras = this.setCodBarras.bind(this)
   }
     
     onChangeValue = (name, value) => {
@@ -59,6 +71,10 @@ export default class Inicio extends Component {
       this.setState({ url_foto: event.nativeEvent.text });
     }
 
+    setCodBarras (event) {
+      this.setState({ codbarras: event.nativeEvent.text });
+    }
+
 
 
   render() {
@@ -66,6 +82,12 @@ export default class Inicio extends Component {
       <ScrollView style={{ margin: 10, flex: 1 }}>
 
         <View>
+            <Input 
+              value={this.state.codbarras}
+              placeholder='Codigo de Barras' 
+              onChange={this.setCodBarras}
+              name={'Barras'}
+            />
             <Input 
               value={this.state.value}
               placeholder='Nome' 
@@ -122,6 +144,12 @@ export default class Inicio extends Component {
 
             <Button
                 style={{ flex: 1, width: 50, marginTop: 50, padding: 50, marginStart: 0}}
+                ViewComponent={LinearGradient} // Don't forget this!
+                linearGradientProps={{
+                  colors: ['#751102', '#A72F1D'],
+                  start: { x: 0, y: 0.5 },
+                  end: { x: 1, y: 0.5 },
+                }}
                 title="Enviar"
                 type="solid"
                 //nome: '', qtd : '', fornecedor:'', cat: '', tipo_un: '', preco: '', estoque_min: '', url_foto: ''

@@ -4,33 +4,39 @@ import {
   Text,
   Vibration,
   View,
-  PermissionsAndroid
+  PermissionsAndroid,
+  StatusBar
 } from 'react-native';
+import { Actions } from "react-native-router-flux";
 import BarcodeScanner from 'react-native-barcodescanner';
+import { Button, Input } from 'react-native-elements';
+import LinearGradient from 'react-native-linear-gradient';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 async function requestCameraPermission() {
   try {
     const granted = await PermissionsAndroid.request(
       PermissionsAndroid.PERMISSIONS.CAMERA,
       {
-        title: 'Cool Photo App Camera Permission',
+        title: 'É Precisso dar permissão da camera',
         message:
-          'Cool Photo App needs access to your camera ' +
-          'so you can take awesome pictures.',
-        buttonNeutral: 'Ask Me Later',
-        buttonNegative: 'Cancel',
-        buttonPositive: 'OK',
+          'Precisamos da permissão para poder ler o códico de barras. ',
+        buttonNeutral: 'Perguntar depois',
+        buttonNegative: 'Cancelar',
+        buttonPositive: 'Aceitar',
       },
     );
     if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-      console.log('You can use the camera');
+      return true
     } else {
-      console.log('Camera permission denied');
+      return false
     }
   } catch (err) {
     console.warn(err);
   }
 }
+
+const a = 0;
 
 export default class Camera extends Component  {
   constructor(props) {
@@ -39,9 +45,10 @@ export default class Camera extends Component  {
     this.state = {
       barcode: '',
       cameraType: 'back',
-      text: 'Scan Barcode',
+      text: 'Mire no codigo de barras e espere.',
       torchMode: 'off',
       type: '',
+      cameraPermission: requestCameraPermission(),
     };
   }
   
@@ -52,7 +59,7 @@ export default class Camera extends Component  {
     
     this.setState({
       barcode: e.data,
-      text: `${e.data} (${e.type})`,
+      text: `${e.data}`,
       type: e.type,
     });
   }
@@ -63,7 +70,7 @@ export default class Camera extends Component  {
     return (
         
       <View style={styles.container}>
-      {requestCameraPermission()}
+      { this.state.cameraPermission ? <StatusBar backgroundColor="#a01601" barStyle="light-content"/> : requestCameraPermission() }
         <BarcodeScanner
           onBarCodeRead={this.barcodeReceived.bind(this)}
           style={{ flex: 1 }}
@@ -71,7 +78,20 @@ export default class Camera extends Component  {
           cameraType={this.state.cameraType}
         />
         <View style={styles.statusBar}>
-          <Text style={styles.statusBarText}>{this.state.text}</Text>
+          <Text style={styles.statusBarText}>{this.state.barcode}</Text>
+          <Button
+              ViewComponent={LinearGradient} // Don't forget this!
+              linearGradientProps={{
+                colors: ['#751102', '#A72F1D'],
+                start: { x: 0, y: 0.5 },
+                end: { x: 1, y: 0.5 },
+              }}
+              icon={<Icon name='plus-circle' color='#ffffff' />}
+              buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0, backgroundColor: '#E2474B' }}
+              title='Adicionar Produto'
+              onPress={() => {
+                Actions.addP({ editProd: { edit : false }, codbarras: this.state.barcode, cam: true});
+              }} />
         </View>
       </View>
     );
